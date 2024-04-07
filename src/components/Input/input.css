@@ -1,0 +1,30 @@
+.input__container {
+    position: relative;
+}
+
+.input {
+    font-size: 14px;
+    line-height: 16px;
+    color: #EBEEF5;
+    background-color: transparent;
+    border: 1px solid #323B54;
+    border-radius: 12px;
+    padding: 24px 16px 24px 0;
+    width: 352px;
+}
+
+.input::placeholder {
+    color: #475069;
+}
+
+.input:focus, input:hover {
+    outline: none;
+    border-color: #323B74;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform:translateY(-50%);
+}
