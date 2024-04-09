@@ -1,50 +1,68 @@
-import './hero.css';
+import styles from './hero.module.css';
+import {useContext} from "react";
+import {UserContext} from "../../App.jsx";
 
+export const Hero = ({user}) => {
+  const { setUser } = useContext(UserContext);
 
-export const Hero = () => {
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   return (
-    <nav className='nav'>
-      <div className="nav__inner">
+    <nav className={styles.nav}>
+      <div className={styles.nav__inner}>
         <img
-          className="nav__logo"
           src="./nav-logo.svg"
           alt="Логотип"
         />
 
-        <div className="nav__block">
-          <div className="nav__item">
+        <div className={styles.nav__block}>
+          <div className={styles.nav__item}>
             <a
-              className="nav__item-link"
+              className={styles['nav__item-link']}
               href="#"
             >
               Поиск фильмов
             </a>
           </div>
 
-          <div className="nav__item">
+          <div className={styles.nav__item}>
             <a
-              className="nav__item-link"
+              className={styles['nav__item-link']}
               href="#"
             >
               Мои фильмы&nbsp;
-              <span className="nav__item-link--count">2</span>
+              <span className={styles['nav__item-link--count']}>2</span>
             </a>
           </div>
 
-          <div className="nav__item">
-            <a
-              className="nav__item-link"
-              href="#"
+          {
+            user &&
+            <div className={styles.nav__item}>
+              <div className={styles['nav__item-link']}>
+                {JSON.stringify(user.name)}
+                <img
+                  src="./user.png"
+                  alt="Войти"
+                />
+              </div>
+            </div>
+          }
+
+          <div className={styles.nav__item}>
+            <div
+              className={styles['nav__item-link']}
+              onClick={handleLogout}
             >
-              Войти
-              <span className="nav__item-link--logo">
+              {user ? 'Выйти' : 'Войти'}
+              <span className={styles['nav__item-link--logo']}>
                 <img
                   src="./logout-logo.svg"
                   alt="Войти"
                 />
               </span>
-            </a>
+            </div>
           </div>
         </div>
       </div>

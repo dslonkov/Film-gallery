@@ -1,16 +1,18 @@
-import './filmRating.css';
+import styles from './filmRating.module.css';
+import cn from 'classnames';
 
 export const FilmRating = ({favTitle, ToggleFavTitle}) => {
   return (
-    <div className="filmCard__rating">
+    <div className={styles.filmCard__rating}>
       <img
-        className="filmCard__rating-icon"
         src={favTitle ? "./filmcard/like.png" : "./filmcard/fav-icon.png"}
         alt="Избранное"
       />
 
       <div
-        className={favTitle ? 'filmCard__rating-title' : 'filmCard__rating-title chosen'}
+        className={cn(styles['filmCard__rating-title'], {
+          [styles['chosen']]: !favTitle
+        })}
         onClick={ToggleFavTitle}
       >
         {favTitle ? 'В избранное' : 'В избранном'}
