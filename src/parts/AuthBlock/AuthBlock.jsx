@@ -7,7 +7,7 @@ import {UserContext} from '../../App.jsx'
 
 export const AuthBlock = () => {
   const { user, setUser } = useContext(UserContext);
-  const [name, setName] = useState(null);
+  const [name, setName] = useState('');
 
   const handleChange = (event) => {
     setName(event.target.value);
@@ -28,10 +28,14 @@ export const AuthBlock = () => {
   };
 
   return (
-    <form className={styles.authBlock} onSubmit={handleSubmit}>
-      <HeadingTitle text='Вход' />
-      <Input placeholder='Ваше имя' value={name} onChange={handleChange}/>
-      <Button type='submit' text='Войти в профиль'/>
-    </form>
+    <div className={styles.authContainer}>
+      <form className={styles.authBlock} onSubmit={handleSubmit}>
+        <HeadingTitle text='Вход' />
+        <Input placeholder='Ваше имя' value={name} onChange={handleChange}/>
+        <Button type='submit'>
+          Войти в профиль
+        </Button>
+      </form>
+    </div>
   );
 };

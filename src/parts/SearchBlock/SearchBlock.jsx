@@ -5,7 +5,7 @@ import styles from './searchBlock.module.css';
 export const SearchBlock = () => {
 
   const handleClickBtn = () => {
-    console.log('clicked');
+
   }
 
   return (
@@ -14,7 +14,9 @@ export const SearchBlock = () => {
         placeholder={'Введите название'}
         withIcon
       />
-      <Button text={'Найти'} onClick={handleClickBtn}/>
+      <Button onClick={handleClickBtn}>
+        Найти
+      </Button>
     </div>
   );
 };

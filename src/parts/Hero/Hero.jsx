@@ -1,11 +1,13 @@
 import styles from './hero.module.css';
 import {useContext} from "react";
 import {UserContext} from "../../App.jsx";
+import {Button} from "../../components/Button/Button.jsx";
 
-export const Hero = ({user}) => {
-  const { setUser } = useContext(UserContext);
+export const Hero = () => {
+  const { setUser, user } = useContext(UserContext);
 
   const handleLogout = () => {
+    localStorage.removeItem('user');
     setUser(null);
   };
 
@@ -41,7 +43,7 @@ export const Hero = ({user}) => {
             user &&
             <div className={styles.nav__item}>
               <div className={styles['nav__item-link']}>
-                {JSON.stringify(user.name)}
+                {user.name}
                 <img
                   src="./user.png"
                   alt="Войти"
@@ -51,18 +53,21 @@ export const Hero = ({user}) => {
           }
 
           <div className={styles.nav__item}>
-            <div
+            <Button
               className={styles['nav__item-link']}
               onClick={handleLogout}
+              invisible
             >
               {user ? 'Выйти' : 'Войти'}
               <span className={styles['nav__item-link--logo']}>
-                <img
-                  src="./logout-logo.svg"
-                  alt="Войти"
-                />
+                {!user &&
+                  <img
+                    src="./logout-logo.svg"
+                    alt="Войти"
+                  />
+                }
               </span>
-            </div>
+            </Button>
           </div>
         </div>
       </div>

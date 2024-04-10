@@ -1,7 +1,13 @@
 import styles from  './button.module.css';
+import cn from 'classnames';
 
-export const Button = ({text, onClick}) => {
+export const Button = ({children, onClick, invisible }) => {
   return (
-    <button className={styles.button} onClick={onClick}>{text}</button>
+    <button
+      className={cn(styles['button'], {[styles['invisible']]: invisible})}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 };
