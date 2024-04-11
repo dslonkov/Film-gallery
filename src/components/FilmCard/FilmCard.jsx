@@ -1,4 +1,4 @@
-import './filmCard.css';
+import styles from './filmCard.module.css';
 import {CardImg} from "../CardImg/CardImg.jsx";
 import {FilmName} from "../FilmName/FilmName";
 import {CardStar} from "../CardStar/CardStar";
@@ -15,7 +15,7 @@ export const FilmCard = ({film}) => {
 
   return (
     <div
-      className='filmCard__card'
+      className={styles.filmCard__card}
     >
       <CardImg film={film} />
       <FilmName film={film} />

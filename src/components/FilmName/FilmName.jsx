@@ -1,8 +1,8 @@
-import './filmName.css';
+import styles from './filmName.module.css';
 
 export const FilmName = ({film}) => {
   return (
-    <div className="filmCard__name">
+    <div className={styles.filmCard__name}>
       {film.name}
     </div>
   );

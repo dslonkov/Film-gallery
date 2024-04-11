@@ -1,12 +1,14 @@
-import './input.css';
+import styles from './input.module.css';
+import {forwardRef} from "react";
 
-export const Input = ({ placeholder, name, value, onChange, withIcon }) => {
+export const Input = forwardRef(({ placeholder, name, value, onChange, withIcon }, ref) => {
   return (
-    <div className="input__container">
+    <div className={styles.input__container}>
       <input
+        className={styles.input}
+        ref={ref}
         style={{paddingLeft: withIcon ? '60px' : '16px', width: withIcon ? '306px' : '352px'}}
         type="text"
-        className="input"
         placeholder={placeholder}
         name={name}
         value={value}
@@ -15,7 +17,7 @@ export const Input = ({ placeholder, name, value, onChange, withIcon }) => {
       {
         withIcon && (
           <img
-            className='search-icon'
+            className={styles['search-icon']}
             src="./search.svg"
             alt="Поиск"
           />
@@ -23,4 +25,4 @@ export const Input = ({ placeholder, name, value, onChange, withIcon }) => {
       }
     </div>
   );
-};
+});

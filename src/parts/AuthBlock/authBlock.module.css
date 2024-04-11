@@ -1,0 +1,14 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.authBlock {
+    height: 100vh;
+}
+
+.authBlock input {
+    margin-bottom: 27px;
+}

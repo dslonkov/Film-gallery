@@ -1,23 +1,37 @@
 import './App.css'
-import {Heading} from "./components/Heading/Heading";
-import {Paragraph} from "./components/Paragraph/Paragraph";
-import {Hero} from "./parts/Hero/Hero";
-import {SearchBlock} from "./parts/SearchBlock/SearchBlock";
-import {FilmCardBlock} from "./parts/FilmCardBlock/FilmCardBlock";
+import { Routes, Route, Navigate, useNavigate} from "react-router-dom";
+import {useState, useEffect, createContext } from "react";
+import {AuthBlock} from "./parts/AuthBlock/AuthBlock";
+import {MainPage } from "./parts/MainPage/MainPage.jsx";
+
+export const UserContext = createContext();
 
 function App() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userStr = localStorage.getItem('user');
+    if (userStr && userStr !== 'undefined') {
+      const user = JSON.parse(userStr);
+      setUser(user);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+      navigate('/');
+    }
+  }, [user]);
 
   return (
-    <div className='site-container'>
-      <Hero />
-      <Heading text={'Поиск'} />
-      <Paragraph
-        text={'Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'}
-        size={16}
-      />
-      <SearchBlock />
-      <FilmCardBlock />
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+        <Routes>
+          <Route path="/" element={user ? <MainPage /> : <Navigate to="/auth" />} />
+          <Route path="/auth" element={<AuthBlock />} />
+        </Routes>
+    </UserContext.Provider>
   )
 }
 

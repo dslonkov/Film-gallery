@@ -22,3 +22,16 @@
 .button:focus {
     outline: none;
 }
+
+.invisible {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    padding: 0;
+    background: none;
+    color: #A8AEBF;
+}
+
+.invisible:hover {
+    transform: scale(1.1);
+}
