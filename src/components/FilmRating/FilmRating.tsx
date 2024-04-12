@@ -1,7 +1,12 @@
 import styles from './filmRating.module.css';
 import cn from 'classnames';
+import {FilmRatingProps} from "./types";
+import React from 'react';
 
-export const FilmRating = ({favTitle, ToggleFavTitle}) => {
+export const FilmRating = (props: FilmRatingProps) => {
+
+  const {favTitle, ToggleFavTitle} = props;
+
   return (
     <div className={styles.filmCard__rating}>
       <img

@@ -34,10 +34,6 @@
     gap: 8px;
 }
 
-.nav__item:first-child {
-    color: #fff;
-}
-
 .nav__item-link--count {
     color: #fff;
     font-size: 14px;
@@ -46,3 +42,13 @@
     border-radius: 50%;
     padding: 0 8px;
 }
+
+.active {
+    color: #fff;
+}
+
+.active button {
+    color: #fff;
+}
+
+

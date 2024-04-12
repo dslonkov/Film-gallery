@@ -1,6 +1,11 @@
+import React from 'react';
 import styles from './cardStar.module.css';
+import {FilmProps} from "entities";
 
-export const CardStar = ({film}) => {
+export const CardStar = (props: FilmProps) => {
+
+  const { rating } = props;
+
   return (
     <div className={styles.filmCard__star}>
       <img
@@ -9,7 +14,7 @@ export const CardStar = ({film}) => {
       />
 
       <div className={styles['filmCard__star-count']}>
-        {film.rating}
+        {rating}
       </div>
     </div>
   );

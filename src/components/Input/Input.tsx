@@ -1,7 +1,12 @@
 import styles from './input.module.css';
 import {forwardRef} from "react";
+import {InputProps} from "./types";
+import React from 'react';
 
-export const Input = forwardRef(({ placeholder, name, value, onChange, withIcon }, ref) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+
+  const { placeholder, name, value, withIcon, onChange } = props;
+
   return (
     <div className={styles.input__container}>
       <input
