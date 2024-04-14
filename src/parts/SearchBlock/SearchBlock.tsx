@@ -1,5 +1,6 @@
-import {Button} from "../../components/Button/Button.jsx";
-import {Input} from "../../components/Input/Input.jsx";
+import React from "react";
+import {Button} from "../../components/Button";
+import {Input} from "../../components/Input";
 import styles from './searchBlock.module.css';
 
 export const SearchBlock = () => {

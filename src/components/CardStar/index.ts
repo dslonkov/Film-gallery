@@ -1,0 +1,1 @@
+export { CardStar } from './CardStar'

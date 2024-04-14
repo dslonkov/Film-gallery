@@ -1,7 +1,10 @@
 import styles from './hero.module.css';
 import {useContext} from "react";
 import {UserContext} from "../../App.jsx";
-import {Button} from "../../components/Button/Button.jsx";
+import {Button} from "../../components/Button";
+import React from 'react';
+import {NavLink} from "react-router-dom";
+import cn from 'classnames';
 
 export const Hero = () => {
   const { setUser, user } = useContext(UserContext);
@@ -20,16 +23,16 @@ export const Hero = () => {
         />
 
         <div className={styles.nav__block}>
-          <div className={styles.nav__item}>
+          <NavLink className={({ isActive }) => cn(styles['nav__item'], {[styles.active]: isActive})} to={'main'}>
             <a
               className={styles['nav__item-link']}
               href="#"
             >
               Поиск фильмов
             </a>
-          </div>
+          </NavLink>
 
-          <div className={styles.nav__item}>
+          <NavLink className={({ isActive }) => cn(styles['nav__item'], {[styles.active]: isActive})} to={'myfilms'}>
             <a
               className={styles['nav__item-link']}
               href="#"
@@ -37,7 +40,7 @@ export const Hero = () => {
               Мои фильмы&nbsp;
               <span className={styles['nav__item-link--count']}>2</span>
             </a>
-          </div>
+          </NavLink>
 
           {
             user &&
@@ -52,9 +55,8 @@ export const Hero = () => {
             </div>
           }
 
-          <div className={styles.nav__item}>
+          <NavLink className={({ isActive }) => cn(styles['nav__item'], {[styles.active]: isActive})} to={'login'}>
             <Button
-              className={styles['nav__item-link']}
               onClick={handleLogout}
               invisible
             >
@@ -68,7 +70,7 @@ export const Hero = () => {
                 }
               </span>
             </Button>
-          </div>
+          </NavLink>
         </div>
       </div>
     </nav>
